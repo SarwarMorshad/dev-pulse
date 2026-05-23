@@ -4,7 +4,7 @@ A collaborative platform for software teams to report bugs, suggest features, an
 
 ## 🔗 Live URL
 
-> Coming soon
+**https://dev-pulse-tawny.vercel.app**
 
 ## ✨ Features
 
