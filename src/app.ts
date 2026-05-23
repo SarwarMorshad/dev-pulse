@@ -2,6 +2,7 @@ import express, { type Application, type Request, type Response } from "express"
 import cors from "cors";
 import { authRoute } from "./modules/auth/auth.route.js";
 import { issueRoute } from "./modules/issues/issue.route.js";
+import globalErrorHandler from "./middleware/globalErrorHandler.js";
 
 const app: Application = express();
 
@@ -21,5 +22,16 @@ app.get("/", (req: Request, res: Response) => {
 // routes
 app.use("/api/auth", authRoute);
 app.use("/api/issues", issueRoute);
+
+// 404 handler
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+  });
+});
+
+// global error handler — must be last
+app.use(globalErrorHandler);
 
 export default app;
