@@ -1,4 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
+import sendResponse from "../utils/sendResponse.js";
 
 const globalErrorHandler = (
   error: any,
@@ -6,10 +7,7 @@ const globalErrorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  res.status(500).json({
-    success: false,
-    message: error.message || "Internal server error",
-  });
+  sendResponse(res, 500, false, error.message || "Internal server error");
 };
 
 export default globalErrorHandler;
