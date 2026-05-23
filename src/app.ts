@@ -1,5 +1,6 @@
 import express, { type Application, type Request, type Response } from "express";
 import cors from "cors";
+import { authRoute } from "./modules/auth/auth.route.js";
 
 const app: Application = express();
 
@@ -15,5 +16,8 @@ app.get("/", (req: Request, res: Response) => {
     message: "DevPulse server is running",
   });
 });
+
+// routes
+app.use("/api/auth", authRoute);
 
 export default app;
